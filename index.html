@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Remove duplicates</title>
+  </head>
+  <body>
+    <h1>Remove Duplicates From List: Code Section</h1>
+    <h2>Functional Code</h2>
+    <pre>
+      <code>function removeDuplicates (list) {
+        var cache = {};
+        var results = [];
+
+        for (var i = 0; i < list.length; i++) {
+          if (cache[list[i]] === undefined){
+            cache[list[i]] = list[i];
+            results[results.length] = list[i];
+          };
+        }
+
+        return results;
+      }</code>
+    </pre>
+  </body>
+</html>
