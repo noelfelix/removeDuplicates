@@ -10,7 +10,7 @@ function removeDuplicates (list) {
       results[results.length] = list[i];
     };
   }
-  console.log(list.length, results.length)
+
   return results;
 }
 
@@ -35,13 +35,16 @@ function timeTest (func, testCount) {
   return new Date() - start;
 }
 
-var testList = [];
-for (var i = 0; i < 1000000; i++) {
-  if (Math.random() < .5) {
-    testList.push(0 + 'qwertyuiopasdfghjklzxcvbnm@gmail.com');
-  } else {
-    testList.push(i + '@gmail.com');
+function generateList(length) {
+  var testList = [];
+  for (var i = 0; i < length; i++) {
+    if (Math.random() < .5) {
+      testList.push(0 + 'qwertyuiopasdfghjklzxcvbnm@gmail.com');
+    } else {
+      testList.push(i + '@gmail.com');
+    }
   }
+  return testList;
 }
 
-console.log(timeTest(removeDuplicates, 1, testList));
+console.log(timeTest(removeDuplicates, 1, generateList(1000000)));

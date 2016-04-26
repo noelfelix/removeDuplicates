@@ -21,5 +21,49 @@
         return results;
       }</code>
     </pre>
+    <h2>List Generation Code</h2>
+    <pre>
+      <code>function generateList(length) {
+        var testList = [];
+        for (var i = 0; i < length; i++) {
+          if (Math.random() < .5) {
+            testList.push(0 + 'qwertyuiopasdfghjklzxcvbnm@gmail.com');
+          } else {
+            testList.push(i + '@gmail.com');
+          }
+        }
+        return testList;
+      }</code>
+    </pre>
+    <h2>Time Test Code</h2>
+    <pre>
+      <code>function timeTest (func, testCount) {
+        var start;
+        var args = [];
+        if (arguments.length > 2) {
+          for (var i = 2; i < arguments.length; i++) {
+            args[args.length] = arguments[i];
+          }
+
+          start = new Date();
+          for (var i = 0; i < testCount; i++) {
+            func.apply(null, args);
+          }
+        } else {
+          start = new Date();
+          for (var i = 0; i < testCount; i++) {
+            func.call(null);
+          }
+        }
+        return new Date() - start;
+      }</code>
+    </pre>
+    <h2>Execution Code/h2>
+    <pre>
+      <code>timeTest(removeDuplicates, 1, generateList(userInput))</code>
+    </pre>
   </body>
 </html>
+<script>
+
+</script>
