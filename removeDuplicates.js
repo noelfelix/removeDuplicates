@@ -10,41 +10,36 @@ function removeDuplicates (list) {
       results[results.length] = list[i];
     };
   }
-
+  console.log(list, results)
   return results;
 }
 
-function timeTest (func, testCount) {
+function timeTest (func) {
   var start;
   var args = [];
-  if (arguments.length > 2) {
-    for (var i = 2; i < arguments.length; i++) {
+  var result;
+  if (arguments.length > 1) {
+    for (var i = 1; i < arguments.length; i++) {
       args[args.length] = arguments[i];
     }
 
     start = new Date();
-    for (var i = 0; i < testCount; i++) {
-      func.apply(null, args);
-    }
+    result = func.apply(null, args);
   } else {
     start = new Date();
-    for (var i = 0; i < testCount; i++) {
-      func.call(null);
-    }
+    result = func.call(null);
   }
-  return new Date() - start;
+  return {result: result, time: new Date() - start};
 }
 
 function generateList(length) {
   var testList = [];
   for (var i = 0; i < length; i++) {
     if (Math.random() < .5) {
-      testList.push(0 + 'qwertyuiopasdfghjklzxcvbnm@gmail.com');
+      testList[testList.length] = i%100 + 'fwefwqefweqwf@gmail.com';
     } else {
-      testList.push(i + '@gmail.com');
+      testList[testList.length] = i + 'fwefwqefweqwf@gmail.com';
     }
   }
   return testList;
 }
-
-console.log(timeTest(removeDuplicates, 1, generateList(1000000)));

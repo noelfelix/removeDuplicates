@@ -4,8 +4,17 @@
     <title>Remove duplicates</title>
   </head>
   <body>
-    <h1>Remove Duplicates From List: Code Section</h1>
-    <h2>Functional Code</h2>
+    <h1>Remove Duplicates From List</h1>
+    <h2>Testing Section:</h2>
+    <hr/>
+    Items in List:<br/>
+    <input id='list-count' type='text' name='listcount' value='50000' />
+    <button id='run-test'>Run Test</button>
+    <div id='results'>
+    </div>
+    <h2>Code Section:</h2>
+    <hr/>
+    <h3>Functional Code</h3>
     <pre>
       <code>function removeDuplicates (list) {
         var cache = {};
@@ -17,11 +26,11 @@
             results[results.length] = list[i];
           };
         }
-
+        console.log(list, results)
         return results;
       }</code>
     </pre>
-    <h2>List Generation Code</h2>
+    <h3>List Generation Code</h3>
     <pre>
       <code>function generateList(length) {
         var testList = [];
@@ -36,14 +45,14 @@
         return testList;
       }</code>
     </pre>
-    <h2>Time Test Code</h2>
+    <h3>Time Test Code</h3>
     <pre>
-      <code>function timeTest (func, testCount) {
+      <code>function timeTest (func) {
         var start;
         var args = [];
 
-        if (arguments.length > 2) {
-          for (var i = 2; i < arguments.length; i++) {
+        if (arguments.length > 1) {
+          for (var i = 1; i < arguments.length; i++) {
             args[args.length] = arguments[i];
           }
 
@@ -63,12 +72,24 @@
         return new Date() - start;
       }</code>
     </pre>
-    <h2>Execution Code</h2>
+    <h3>Execution Code</h3>
     <pre>
-      <code>timeTest(removeDuplicates, 1, generateList(userInput))</code>
+      <code>timeTest(removeDuplicates, userCountInput, generateList(userLengthInput))</code>
     </pre>
   </body>
 </html>
-<script>
-
+<script src="./removeDuplicates.js"></script>
+<script type='text/javascript'>
+  var testButton = document.getElementById('run-test');
+  testButton.addEventListener('click', function(e) {
+    var listCount = document.getElementById('list-count').value;
+    if (listCount > 100000000) {
+      alert('Let\'s simmer down and not go over 100 million');
+    } else {
+      var results = timeTest(removeDuplicates, generateList(listCount));
+      var duplicatePercentage = '' + 100 - results.result.length/listCount * 100 + '%';
+      var time = '' + results.time;
+      document.getElementById('results').innerHTML = '<p>Initial list size: ' + listCount + '<br/>Percent duplicates: ' + duplicatePercentage + '<br/>Time: ' + time + 'ms</p>';
+    }
+  });
 </script>
