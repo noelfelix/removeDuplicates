@@ -14,7 +14,7 @@ function removeDuplicates (list) {
   return results;
 }
 
-function timeTest (func) {
+function timeTest (func, testCount) {
   var start;
   var args = [];
   var result;
